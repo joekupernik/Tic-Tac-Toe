@@ -49,16 +49,23 @@ function Square(props) {
         status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
       }
       return (
-        <div className="game">
-            <div className="game-board">
-                <Board
-                  squares={current.squares}
-                  onClick={(i) => this.handleClick(i)} />
-            </div>
-            <div className="game-info">
-                <div>{status}</div>
-                <ol>{/*todo*/}</ol>
-            </div>
+        <div>
+          <div className="status">{status}</div>
+          <div className="board-row">
+            {this.renderSquare(0)}
+            {this.renderSquare(1)}
+            {this.renderSquare(2)}
+          </div>
+          <div className="board-row">
+            {this.renderSquare(3)}
+            {this.renderSquare(4)}
+            {this.renderSquare(5)}
+          </div>
+          <div className="board-row">
+            {this.renderSquare(6)}
+            {this.renderSquare(7)}
+            {this.renderSquare(8)}
+          </div>
         </div>
       );
     }
