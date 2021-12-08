@@ -72,14 +72,14 @@ function Square(props) {
             squares: squares
           }]),
           stepNumber: history.length,
-          xIsNext: !this.state.xIsNext,
+          xIsNext: !this.state.xIsNext
         });
       }
 
     jumpTo(step) {
         this.setState({
             stepNumber: step,
-            xIsNext: (step % 2) ===0,
+            xIsNext: (step % 2) === 0,
         });
     }
 
@@ -94,7 +94,7 @@ function Square(props) {
             'Go to game start';
             return (
                 <li key={move}>
-                    <button onClick={() => this.jumpTo(move)}>{{desc}}</button>
+                    <button onClick={() => this.jumpTo(move)}>{desc}</button>
                 </li>
             );
         });
@@ -110,7 +110,8 @@ function Square(props) {
           <div className="game-board">
             <Board 
             squares={current.squares}
-            onClick={(i) => this.handleClick(i)} />
+            onClick={i => this.handleClick(i)} 
+            />
           </div>
           <div className="game-info">
             <div>{status}</div>
@@ -120,6 +121,14 @@ function Square(props) {
       );
     }
   }
+  
+  
+  // ========================================
+  
+  ReactDOM.render(
+    <Game />,
+    document.getElementById('root')
+  );
   function calculateWinner(squares) {
     const lines = [
       [0, 1, 2],
@@ -139,11 +148,3 @@ function Square(props) {
     }
     return null;
   }
-  
-  // ========================================
-  
-  ReactDOM.render(
-    <Game />,
-    document.getElementById('root')
-  );
-  
